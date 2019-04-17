@@ -1,0 +1,61 @@
+<%= form_with(model: product, local: true) do |f| %>
+  
+  <div class="row">
+  <div class="col-sm-4">
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :product_type %>
+      <%= f.text_field :product_type, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :product_name %>
+      <%= f.text_field :product_name, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :model %>
+      <%= f.text_field :model, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :brand %>
+      <%= f.text_field :brand, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :year %>
+      <%= f.text_field :year, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :ram %>
+      <%= f.text_field :ram, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :internal_storage %>
+      <%= f.text_field :internal_storage, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+         <%= f.label  :external_storage %>
+      <%= f.text_field :external_storage, class: "input form-control" %>
+    </div>
+   </div>
+   <div class="field form-group">
+    <div class="control">
+      <%= f.submit :submit, class: "button is-link btn btn-info" %>
+    </div>
+   </div>
+   </div>
+   </div>
+
+<% end %>
