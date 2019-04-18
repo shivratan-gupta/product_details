@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    params[:page] = params[:page].present? ? params[:page] : 1
     @products = Product.all.order('created_at desc').page params[:page]
   end
 

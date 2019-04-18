@@ -75,4 +75,5 @@ gem 'shortener'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'pry'
-# gem "haml-rails", "~> 1.0"
+gem "faker"
+gem 'axlsx_rails'

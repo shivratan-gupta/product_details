@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %>
+<%= link_to 'Export Product', new_product_path, class: 'btn btn-primary' %>
+
 <h1>Products</h1>
 
 <table class="table table-striped">
@@ -12,16 +15,17 @@
       <th>Brand</th>
       <th>Year</th>
       <th>RAM</th>
-      <th>Internal Storage(In MB)</th>
-      <th>External Storage(In MB)</th>
+      <th>Internal Storage(In GB)</th>
+      <th>External Storage(In GB)</th>
       <th colspan="3" style="text-align: center;">Action</th>
     </tr>
   </thead>
 
   <tbody>
+    <%count = 1 %>
     <% @products.each do |product| %>
       <tr>
-        <td>1</td>
+        <td><%= count +(params[:page].to_i + 25) %></td>
         <td><%= product.product_type %></td>
         <td><%= product.product_name %></td>
         <td><%= product.model %></td>
@@ -30,14 +34,15 @@
         <td><%= product.ram %></td>
         <td><%= product.external_storage %></td>
         <td><%= product.internal_storage %></td>
-        <td><%= link_to 'Show', product %></td>
+        <!-- <td><%#= link_to 'Show', product %></td> -->
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% count += 1 %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %>
+<%= paginate @products, theme: 'my_custom_theme' %>
+<br/>
