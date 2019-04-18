@@ -1,3 +1,8 @@
+<style>
+  .filter-bar{
+    background-color: #fff;border: 1px solid #c6c3c3;border-radius: 5px;box-shadow: 0 1px 4px #eae7e7;margin: 0 auto 20px;width: 98%;
+  }
+</style>
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %>
@@ -7,18 +12,13 @@
 <h1>Products</h1>
 
 <%= form_tag( products_path, :method=>'get', :id => 'product_search_form', :class=>'tran-frm') do %>
-    <div style="background-color: #fff;border: 1px solid #c6c3c3;border-radius: 5px;box-shadow: 0 1px 4px #eae7e7;margin: 0 auto 20px;width: 98%;">
+    <div class="filter-bar">
       <ul>
-        <li><label>Brand</label></li>
-        <li><%= select_tag :select_brand, options_for_select(@brand,@selected_brand), {:prompt => 'Select Brand'}%></li>
-        <li><label>Model</label></li>
-        <li><%= select_tag :select_model, options_for_select(@model,@selected_model), {:prompt => 'Select Model'}%></li>
-        <li><label>RAM</label></li>
-        <li><%= select_tag :select_ram, options_for_select(@ram,@selected_ram), {:prompt => 'Select RAM'}%></li>
-        <li><label>External Storage</label></li>
-        <li><%= select_tag :select_extst, options_for_select(@extst,@selected_extst), {:prompt => 'Select External Storage'}%></li>
-        <li><button class="btn search-btn" id="search_filter" name="button" type="submit">Filter</button></li>
-        <li><button class="btn" id="reset_filter" name="button" type="submit">Reset</button></li>
+        <li><label>Brand</label><%= select_tag :select_brand, options_for_select(@brand,@selected_brand), {:prompt => 'Select Brand'}%></li>
+        <li><label>Model</label><%= select_tag :select_model, options_for_select(@model,@selected_model), {:prompt => 'Select Model'}%></li>
+        <li><label>RAM</label><%= select_tag :select_ram, options_for_select(@ram,@selected_ram), {:prompt => 'Select RAM'}%></li>
+        <li><label>External Storage</label><%= select_tag :select_extst, options_for_select(@extst,@selected_extst), {:prompt => 'Select External Storage'}%></li>
+        <li><button class="glyphicon glyphicon-search" id="search_filter" name="button" type="submit">Filter</button><button class="glyphicon glyphicon-reset" id="reset_filter" name="button" type="submit">Reset</button></li>
       </ul>
     </div>
  <% end %>
