@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+count = 1
+wb.add_worksheet(name: "Products") do |sheet|
+sheet.add_row ["Sr. No","Product Type","Product Name","Model","Brand","Year","RAM","Internal Storage(In GB)","External Storage(In GB)"]
+  @products.each do |product|
+    sheet.add_row [count,product.product_type,product.product_name,product.model, product.brand,product.year,product.ram,product.internal_storage,product.external_storage]
+    count +=1
+  end
+end

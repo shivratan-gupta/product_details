@@ -5,7 +5,48 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     params[:page] = params[:page].present? ? params[:page] : 1
-    @products = Product.all.order('created_at desc').page params[:page]
+
+    @products_details = Product.select(:brand,:model,:ram,:external_storage)#.uniq#.collect{|a| ["#{a.brand}", "a.brand"]}
+    @brand = @products_details.pluck(:brand).uniq.sort
+    @model = @products_details.pluck(:model).uniq.sort
+    @ram = @products_details.pluck(:ram).uniq.sort
+    @extst = @products_details.pluck(:external_storage).uniq.sort
+    @selected_brand = params[:select_brand].present? ? params[:select_brand] : ''
+    @selected_model = params[:select_model].present? ? params[:select_model] : ''
+    @selected_ram = params[:select_ram].present? ? params[:select_ram] : ''
+    @selected_extst = params[:select_extst].present? ? params[:select_extst] : ''
+
+    condition = []
+    if params[:select_brand].present?
+       condition << " brand = '#{params[:select_brand]}'"
+    end
+
+    if params[:select_model].present?
+       condition << " model = '#{params[:select_model]}'"
+    end
+
+    if params[:select_ram].present?
+       condition << " ram = #{params[:select_ram]}"
+    end
+
+    if params[:select_extst].present?
+       condition << " external_storage = #{params[:select_extst]}"
+    end
+    if condition != []
+      @products = Product.where(condition).order('created_at desc').page params[:page]
+    else
+      @products = Product.all.order('created_at desc').page params[:page]
+    end
+  end
+
+  def export
+    @products = Product.all
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="all_products.xlsx"'
+      }
+    end
   end
 
   # GET /products/1
