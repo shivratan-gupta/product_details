@@ -1,7 +1,11 @@
 <style>
-  .filter-bar{
-    background-color: #fff;border: 1px solid #c6c3c3;border-radius: 5px;box-shadow: 0 1px 4px #eae7e7;margin: 0 auto 20px;width: 98%;
+  .filter-bar{background-color: #fff;border: 1px solid #c6c3c3;border-radius: 5px;box-shadow: 0 1px 4px #eae7e7;margin: 0 auto;width: 100%;
   }
+  .filter-bar ul{margin: 0;padding: 0;list-style-type: none;}
+  .filter-bar ul li {display: inline-block;margin-left: 20px;}
+  .filter-bar ul li:first-child { margin-left: 0}
+  .filter-bar li label {margin-right: 10px;}
+  .filter-bar li> button{margin-right: 10px;}
 </style>
 <p id="notice"><%= notice %></p>
 
